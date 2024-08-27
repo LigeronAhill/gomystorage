@@ -1,13 +1,12 @@
 package gomystorage
 
 import (
+	"gomystorage/models"
 	"io"
 	"log"
 	"net/http"
 	"net/url"
 	"strconv"
-
-	"github.com/LigeronAhill/gomystorage/models"
 )
 
 // ListAllEntities retrieves an entity from the API.

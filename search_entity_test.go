@@ -2,19 +2,14 @@ package gomystorage
 
 import (
 	"encoding/json"
+	"gomystorage/models"
+
 	"os"
 	"testing"
-
-	"github.com/joho/godotenv"
-
-	"github.com/LigeronAhill/gomystorage/models"
 )
 
 func TestApiClient_SearchEntity(t *testing.T) {
-	err := godotenv.Load()
-	if err != nil {
-		t.Fatal(err)
-	}
+
 	token := os.Getenv("MS_TOKEN")
 	client := New(token)
 

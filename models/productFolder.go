@@ -22,7 +22,7 @@ type ProductFolder struct {
 	Group               MetaWrapper `json:"group,omitempty"`
 	ID                  uuid.UUID   `json:"id,omitempty"`
 	Meta                Meta        `json:"meta,omitempty"`
-	Name                string      `json:"name,omitempty"`
+	Name                string      `json:"name"`
 	Owner               MetaWrapper `json:"owner,omitempty"`
 	PathName            string      `json:"pathName,omitempty"`
 	ProductFolder       MetaWrapper `json:"productFolder,omitempty"`
@@ -36,8 +36,4 @@ type ProductFolder struct {
 
 func (f ProductFolder) Endpoint() string {
 	return "/entity/productfolder"
-}
-
-func NewProductFolder(name string) ProductFolder {
-	return ProductFolder{Name: name}
 }

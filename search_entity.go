@@ -1,12 +1,11 @@
 package gomystorage
 
 import (
+	"gomystorage/models"
 	"io"
 	"log"
 	"net/http"
 	"net/url"
-
-	"github.com/LigeronAhill/gomystorage/models"
 )
 
 func (c ApiClient) SearchEntity(entity models.Entity, search string) ([]byte, error) {

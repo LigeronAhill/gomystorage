@@ -7,19 +7,14 @@ import (
 	"os"
 	"reflect"
 	"testing"
-
-	"github.com/joho/godotenv"
 )
 
 func TestNew(t *testing.T) {
 	type args struct {
 		token string
 	}
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal(err)
-	}
 	token := os.Getenv("MS_TOKEN")
+	t.Log(token)
 	wantUrl, err := url.Parse("https://api.moysklad.ru/api/remap/1.2")
 	if err != nil {
 		log.Fatal(err)
@@ -34,7 +29,7 @@ func TestNew(t *testing.T) {
 			args: args{token: "someToken"},
 			want: &ApiClient{
 				baseUrl: *wantUrl,
-				token:   "someToken",
+				token:   "Bearer someToken",
 				client:  http.Client{},
 			},
 		},
@@ -43,7 +38,7 @@ func TestNew(t *testing.T) {
 			args: args{token: token},
 			want: &ApiClient{
 				baseUrl: *wantUrl,
-				token:   token,
+				token:   "Bearer " + token,
 				client:  http.Client{},
 			},
 		},
